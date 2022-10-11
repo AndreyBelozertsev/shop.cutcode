@@ -18,9 +18,10 @@ class ProductRaitingFactory extends Factory
      */
     public function definition()
     {
+        if(! User::count() ) User::factory()->count(100)->create();
         return [
-            'user_id' => User::factory(),
-            'product_id' => Product::factory(),
+            'user_id' => User::all()->random(),
+            'product_id' => Product::all()->random(),
             'votes' => fake()->numberBetween(1, 5),
             'created_at' => fake()->date('Y-m-d H:i:s'),
         ];

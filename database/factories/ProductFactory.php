@@ -19,13 +19,13 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'title' => fake()->name(),
+            'title' => fake()->word(),
             'slug' => fake()->slug(),
             'thumbnail' => fake()->imageUrl(640, 480),
             'price' => fake()->randomFloat(2, 500, 20000),
             'description' => fake()->paragraph(),
-            'category_id' => Category::factory(),
-            'brand_id' => Brand::factory(),
+            'category_id' => Category::all()->random(),
+            'brand_id' => Brand::all()->random(),
         
         ];
     }
