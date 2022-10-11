@@ -12,5 +12,5 @@
       
         @vite(['resources/css/app.css', 'resources/css/scss/main.sass', 'resources/js/app.js'])
     </head>
-   <div>2222</div>
+   <div></div>
 </html>
