@@ -23,4 +23,14 @@ class Product extends Model
     {
         return $this->hasMany(ProductRaiting::class);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status',1);
+    }
+
+    public function scopePopular($query)
+    {
+        return $query->orderBy('raiting.vote', 'asc');
+    }
 }

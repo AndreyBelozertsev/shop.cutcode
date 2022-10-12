@@ -32,9 +32,9 @@
 			<h1 class="mb-5 text-lg font-semibold">Вход в аккаунт</h1>
 			<form class="space-y-3" method="POST" action="{{ route('login') }}">
                 @csrf
-				<input type="email" class="w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/20 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold" value="{{ old('email') }}" placeholder="E-mail" required>
+				<input type="email" name="email" class="w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/20 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold" value="{{ old('email') }}" placeholder="E-mail" required>
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
-				<input type="password" class="w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/20 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold" placeholder="Пароль" required>
+				<input type="password" name="password" class="w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/20 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold" placeholder="Пароль" required>
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
 				<button type="submit" class="w-full btn btn-pink">Войти</button>
 			</form>
