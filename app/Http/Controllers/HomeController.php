@@ -12,9 +12,8 @@ use Illuminate\Database\Eloquent\Builder;
 class HomeController extends Controller
 {
     public function index(){
-        $categories = Category::active()->get();
-        $products = Product::active()->with('raiting')->limit(8)->get();
-        $brands = Brand::active()->get();
-        return view('welcome',['categories' => $categories, 'products' => $products,'brands'=> $brands]);
+        
+        
+        return view('welcome');
     }
 }

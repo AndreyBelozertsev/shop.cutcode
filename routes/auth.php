@@ -36,6 +36,10 @@ Route::middleware('guest')->group(function () {
     Route::get('/login-service', function () {
                 return view('auth.login-service');
              });
+
+    Route::get('/register-service', function () {
+                return view('auth.register-service');
+             });
 });
 
 Route::middleware('auth')->group(function () {

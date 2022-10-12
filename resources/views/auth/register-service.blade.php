@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
-@include('layouts.head')
+<head>
+	<meta charset="utf-8">
+	<title>CutCode</title>
+	<meta name="description" content="Видеокурс по изучению принципов программирования">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+	<link rel="mask-icon" href="./images/safari-pinned-tab.svg" color="#1E1F43">
+	<meta name="msapplication-TileColor" content="#1E1F43">
+	<meta name="theme-color" content="#1E1F43">
+
+	@vite(['resources/css/app.css', 'resources/css/scss/main.sass'])
+</head>
 <body>
 
  <main class="md:min-h-screen md:flex md:items-center md:justify-center py-16 lg:py-20">
@@ -9,15 +23,15 @@
 		<!-- Page heading -->
 		<div class="text-center">
 			<a href="index.html" class="inline-block" rel="home">
-				<img src="./template/images/logo.svg" class="w-[148px] md:w-[201px] h-[36px] md:h-[50px]" alt="CutCode">
+				<img src="./images/logo.svg" class="w-[148px] md:w-[201px] h-[36px] md:h-[50px]" alt="CutCode">
 			</a>
 		</div>
 
 		<div class="max-w-[640px] mt-12 mx-auto p-6 xs:p-8 md:p-12 2xl:p-16 rounded-[20px] bg-purple">
-			<h1 class="mb-5 text-lg font-semibold">Вход в аккаунт</h1>
+			<h1 class="mb-5 text-lg font-semibold">Регистрация</h1>
 			<ul class="space-y-3">
 				<li>
-					<a href="{{ route('login') }}" class="relative flex items-center h-14 px-12 rounded-lg border border-[#A07BF0] bg-white/20 hover:bg-white/20 active:bg-white/10 active:translate-y-0.5">
+					<a href="register-mail.html" class="relative flex items-center h-14 px-12 rounded-lg border border-[#A07BF0] bg-white/20 hover:bg-white/20 active:bg-white/10 active:translate-y-0.5">
 						<svg class="shrink-0 absolute left-4 w-5 sm:w-6 h-5 sm:h-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
 							<path d="M15.833.833H4.167A4.172 4.172 0 0 0 0 5v10a4.172 4.172 0 0 0 4.167 4.167h11.666A4.172 4.172 0 0 0 20 15V5A4.172 4.172 0 0 0 15.833.833ZM4.167 2.5h11.666a2.5 2.5 0 0 1 2.317 1.572l-6.382 6.383a2.506 2.506 0 0 1-3.536 0L1.85 4.072A2.5 2.5 0 0 1 4.167 2.5Zm11.666 15H4.167a2.5 2.5 0 0 1-2.5-2.5V6.25l5.386 5.383a4.172 4.172 0 0 0 5.894 0l5.386-5.383V15a2.5 2.5 0 0 1-2.5 2.5Z"/>
 						</svg>
@@ -34,7 +48,7 @@
 				</li>
 			</ul>
 			<div class="space-y-3 mt-5">
-				<div class="text-xxs md:text-xs"><a href="register.html" class="text-white hover:text-white/70 font-bold">Регистрация</a></div>
+				<div class="text-xxs md:text-xs">Есть аккаунт? <a href="login.html" class="text-white hover:text-white/70 font-bold underline underline-offset-4">Войти</a></div>
 			</div>
 			<ul class="flex flex-col md:flex-row justify-between gap-3 md:gap-4 mt-14 md:mt-20">
 				<li>
@@ -52,7 +66,8 @@
 	</div>
  </main>
 
- @include('layouts.scripts-footer')
+ <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+ @vite(['resources/js/app.js'])
 
 </body>
 </html>
