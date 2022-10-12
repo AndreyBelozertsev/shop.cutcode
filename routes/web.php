@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -22,5 +23,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
+
+Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product');
 
 require __DIR__.'/auth.php';

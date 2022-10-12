@@ -18,7 +18,6 @@ class BrandFactory extends Factory
     {
         return [
             'title' => fake()->word(),
-            'slug' => fake()->slug(),
             'thumbnail' => fake()->imageUrl(640, 480),
             'description' => fake()->paragraph(),
         ];

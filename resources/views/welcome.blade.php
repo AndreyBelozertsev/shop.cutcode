@@ -60,7 +60,10 @@
 
 			<!-- Products list -->
 			<div class="products grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-8 lg:gap-y-10 2xl:gap-y-12 mt-8">
-				
+            @forelse($products as $product)
+                @include('partials.category.product', $product)
+            @empty
+            @endforelse
 			</div>
 
 			<div class="mt-12 text-center">
@@ -74,42 +77,10 @@
 
 			<!-- Brands list -->
 			<div class="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-6 gap-4 md:gap-8 mt-12">
-				<a href="catalog.html" class="p-6 rounded-xl bg-card hover:bg-card/60">
-					<div class="h-12 md:h-16">
-						<img src="./images/brands/1.png" class="object-contain w-full h-full" alt="Steelseries">
-					</div>
-					<div class="mt-8 text-xs sm:text-sm lg:text-md font-semibold text-center">Steelseries</div>
-				</a>
-				<a href="catalog.html" class="p-6 rounded-xl bg-card hover:bg-card/60">
-					<div class="h-12 md:h-16">
-						<img src="./images/brands/2.png" class="object-contain w-full h-full" alt="Razer">
-					</div>
-					<div class="mt-8 text-xs sm:text-sm lg:text-md font-semibold text-center">Razer</div>
-				</a>
-				<a href="catalog.html" class="p-6 rounded-xl bg-card hover:bg-card/60">
-					<div class="h-12 md:h-16">
-						<img src="./images/brands/3.png" class="object-contain w-full h-full" alt="Logitech">
-					</div>
-					<div class="mt-8 text-xs sm:text-sm lg:text-md font-semibold text-center">Logitech</div>
-				</a>
-				<a href="catalog.html" class="p-6 rounded-xl bg-card hover:bg-card/60">
-					<div class="h-12 md:h-16">
-						<img src="./images/brands/4.png" class="object-contain w-full h-full" alt="HyperX">
-					</div>
-					<div class="mt-8 text-xs sm:text-sm lg:text-md font-semibold text-center">HyperX</div>
-				</a>
-				<a href="catalog.html" class="p-6 rounded-xl bg-card hover:bg-card/60">
-					<div class="h-12 md:h-16">
-						<img src="./images/brands/5.png" class="object-contain w-full h-full" alt="Playstation">
-					</div>
-					<div class="mt-8 text-xs sm:text-sm lg:text-md font-semibold text-center">Playstation</div>
-				</a>
-				<a href="catalog.html" class="p-6 rounded-xl bg-card hover:bg-card/60">
-					<div class="h-12 md:h-16">
-						<img src="./images/brands/6.png" class="object-contain w-full h-full" alt="XBOX">
-					</div>
-					<div class="mt-8 text-xs sm:text-sm lg:text-md font-semibold text-center">XBOX</div>
-				</a>
+                @forelse($brands as $brand)
+                    @include('partials.brand', $brand)
+                @empty
+                @endforelse
 			</div>
 		</section>
 
