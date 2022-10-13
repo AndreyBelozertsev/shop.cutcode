@@ -1,11 +1,11 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Product;
 
 use App\Models\Product;
 use Illuminate\View\Component;
 
-class ProductsMain extends Component
+class MainPage extends Component
 {
     /**
      * Create a new component instance.
@@ -27,6 +27,6 @@ class ProductsMain extends Component
      */
     public function render()
     {
-        return view('components.products-main',['products'=>$this->getData()]);
+        return view('components.product.main-page',['products'=>$this->getData()]);
     }
 }

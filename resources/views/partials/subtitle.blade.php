@@ -1,1 +1,0 @@
-<h2 class="text-lg lg:text-[42px] font-black">{{ $subtitle }}</h2>

@@ -12,8 +12,6 @@ use Illuminate\Database\Eloquent\Builder;
 class HomeController extends Controller
 {
     public function index(){
-        
-        
-        return view('welcome');
+        return view('page.home');
     }
 }

@@ -30,7 +30,7 @@
 
 	@include('partials.modals')
 
-	@include('layouts.scripts-footer')
+	@include('partials.scripts-footer')
 
 </body>
 </html>

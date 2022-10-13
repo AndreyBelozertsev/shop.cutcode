@@ -1,16 +1,18 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Category;
 
-use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\View\Component;
 
-class BrandsMain extends Component
+class MainPage extends Component
 {
     
+
     protected function getData(){
-        return Brand::active()->get();
+        return Category::active()->get();
     }
+
     /**
      * Get the view / contents that represent the component.
      *
@@ -18,6 +20,6 @@ class BrandsMain extends Component
      */
     public function render()
     {
-        return view('components.brands-main',['brands'=> $this->getData()]);
+        return view('components.category.main-page',['categories'=> $this->getData()]);
     }
 }

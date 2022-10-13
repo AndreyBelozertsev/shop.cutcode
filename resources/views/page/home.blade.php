@@ -3,23 +3,21 @@
 @section('content')
 <main class="py-16 lg:py-20">
 	 <div class="container">
-
 		<section>
-			<!-- Section heading -->
-            @include('partials.subtitle',['subtitle'=>'Наши преимущества'])
+		    <x-subtitle subtitle="Наши преимущества" />
 			<!-- Advantages -->
-			@include('partials.advantages')
+            <x-advantages />
 		</section>
         <section class="mt-16 lg:mt-24">
-		    <x-categories-main />
+		    <x-category.main-page />
         </section>
 
 		<section class="mt-16 lg:mt-24">
-            <x-products-main />
+            <x-product.main-page />
 		</section>
 
 		<section class="mt-20">
-            <x-brands-main />
+            <x-brand.main-page />
 		</section>
 
 	</div>
