@@ -10,6 +10,11 @@ class Brand extends Model
 {
     use HasFactory, Sluggable;
 
+    protected $fillable = [
+        'title',
+        'slug'
+    ];
+
     public function products()
     {
         return $this->hasMany(Product::class);

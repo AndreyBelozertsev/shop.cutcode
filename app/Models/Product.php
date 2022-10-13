@@ -10,6 +10,12 @@ class Product extends Model
 {
     use HasFactory, Sluggable;
 
+    protected $fillable = [
+        'title',
+        'price',
+        'slug'
+    ];
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);
