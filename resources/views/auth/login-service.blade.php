@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-@include('layouts.head')
+@include('partials.head')
 <body>
 
  <main class="md:min-h-screen md:flex md:items-center md:justify-center py-16 lg:py-20">
@@ -9,7 +9,7 @@
 		<!-- Page heading -->
 		<div class="text-center">
 			<a href="index.html" class="inline-block" rel="home">
-				<img src="./template/images/logo.svg" class="w-[148px] md:w-[201px] h-[36px] md:h-[50px]" alt="CutCode">
+                <x-application-logo class="w-[148px] md:w-[201px] h-[36px] md:h-[50px]" />
 			</a>
 		</div>
 
@@ -52,7 +52,7 @@
 	</div>
  </main>
 
- @include('layouts.scripts-footer')
+ @include('partials.scripts-footer')
 
 </body>
 </html>

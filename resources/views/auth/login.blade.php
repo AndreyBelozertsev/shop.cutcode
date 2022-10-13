@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="ru">
-@include('layouts.head')
+@include('partials.head')
 <body>
 
  <main class="md:min-h-screen md:flex md:items-center md:justify-center py-16 lg:py-20">
@@ -10,7 +10,7 @@
 		<!-- Page heading -->
 		<div class="text-center">
 			<a href="index.html" class="inline-block" rel="home">
-				<img src="./template/images/logo.svg" class="w-[148px] md:w-[201px] h-[36px] md:h-[50px]" alt="CutCode">
+				<x-application-logo class="w-[148px] md:w-[201px] h-[36px] md:h-[50px]" />
 			</a>
 		</div>
 
@@ -22,6 +22,8 @@
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
 				<input type="password" name="password" class="w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/20 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold" placeholder="Пароль" required>
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
+				<!-- Session Status -->
+                <x-auth-session-status class="mb-4" :status="session('status')" />
 				<button type="submit" class="w-full btn btn-pink">Войти</button>
 			</form>
 			<div class="space-y-3 mt-5">
@@ -43,7 +45,7 @@
 
 	</div>
  </main>
-@include('layouts.scripts-footer')
+@include('partials.scripts-footer')
 
 </body>
 </html>

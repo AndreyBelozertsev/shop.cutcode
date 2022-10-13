@@ -1,35 +1,46 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<!DOCTYPE html>
+<html lang="ru">
+@include('partials.head')
+<body>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+ <main class="md:min-h-screen md:flex md:items-center md:justify-center py-16 lg:py-20">
+	 <div class="container">
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+		<!-- Page heading -->
+		<div class="text-center">
+			<a href="{{ route('home') }}" class="inline-block" rel="home">
+                <x-application-logo class="w-[148px] md:w-[201px] h-[36px] md:h-[50px]" />
+			</a>
+		</div>
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
+		<div class="max-w-[640px] mt-12 mx-auto p-6 xs:p-8 md:p-12 2xl:p-16 rounded-[20px] bg-purple">
+			<h1 class="mb-5 text-lg font-semibold">Восстановить пароль</h1>
+			<form method="POST" action="{{ route('password.email') }}" class="space-y-3">
+                @csrf
+				<input name="email" type="email" class="w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/20 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold" value="{{ old('email') }}" placeholder="E-mail" required>
+				<x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <!-- Session Status -->
+                <x-auth-session-status class="mb-4" :status="session('status')" />
+                <button type="submit" class="w-full btn btn-pink">Отправить</button>
+			</form>
+			<div class="space-y-3 mt-5">
+				<div class="text-xxs md:text-xs"><a href="{{ route('register') }}" class="text-white hover:text-white/70 font-bold">Регистрация</a></div>
+			</div>
+			<ul class="flex flex-col md:flex-row justify-between gap-3 md:gap-4 mt-14 md:mt-20">
+				<li>
+					<a href="#" class="inline-block text-white hover:text-white/70 text-xxs md:text-xs font-medium" target="_blank" rel="noopener">Пользовательское соглашение</a>
+				</li>
+				<li class="hidden md:block">
+					<div class="h-full w-[2px] bg-white/20"></div>
+				</li>
+				<li>
+					<a href="#" class="inline-block text-white hover:text-white/70 text-xxs md:text-xs font-medium" target="_blank" rel="noopener">Политика конфиденциальности</a>
+				</li>
+			</ul>
+		</div>
 
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-primary-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+	</div>
+ </main>
+@include('partials.scripts-footer')
+</body>
+</html>
