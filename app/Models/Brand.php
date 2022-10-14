@@ -12,7 +12,8 @@ class Brand extends Model
 
     protected $fillable = [
         'title',
-        'slug'
+        'slug',
+        'is_home_page'
     ];
 
     public function products()
@@ -22,6 +23,11 @@ class Brand extends Model
     public function scopeActive($query)
     {
         return $query->where('status',1);
+    }
+
+    public function scopeHomePage($query)
+    {
+        return $query->where('is_home_page',1);
     }
 
     /**

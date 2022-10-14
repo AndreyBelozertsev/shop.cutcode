@@ -10,7 +10,7 @@ class MainPage extends Component
     
 
     protected function getData(){
-        return Category::active()->get();
+        return Category::active()->homePage()->orderBy('sort')->get();
     }
 
     /**

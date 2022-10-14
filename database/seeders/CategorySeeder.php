@@ -17,7 +17,8 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'title' => 'Мыши'
+                'title' => 'Мыши',
+                'is_home_page' => 1
             ],
             [
                 'title' => 'Клавиатуры'
@@ -29,7 +30,8 @@ class CategorySeeder extends Seeder
                 'title' => 'Поверхности'
             ],
             [
-                'title' => 'Мониторы'
+                'title' => 'Мониторы',
+                'is_home_page' => 1
             ],
             [
                 'title' => 'Консоли'
@@ -38,7 +40,8 @@ class CategorySeeder extends Seeder
                 'title' => 'Акустика'
             ],
             [
-                'title' => 'Аксессуары'
+                'title' => 'Аксессуары',
+                'is_home_page' => 1
             ],
             [
                 'title' => 'Распродажа'
@@ -51,6 +54,7 @@ class CategorySeeder extends Seeder
                     'title' => $category['title']
                 ],
                 [
+                    'is_home_page' => $category['is_home_page'] ?? 0,
                     'thumbnail' => $category['title'] ?? ''
                 ]
             );

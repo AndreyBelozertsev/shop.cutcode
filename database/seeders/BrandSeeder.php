@@ -18,7 +18,8 @@ class BrandSeeder extends Seeder
         $brands = [
             [
                 'title' => 'Steelseries',
-                'thumbnail' => '/storage/brands/1.png'
+                'thumbnail' => '/storage/brands/1.png',
+                'is_home_page' => 1
             ],
             [
                 'title' => 'Razer',
@@ -30,7 +31,8 @@ class BrandSeeder extends Seeder
             ],
             [
                 'title' => 'HyperX',
-                'thumbnail' => '/storage/brands/4.png'
+                'thumbnail' => '/storage/brands/4.png',
+                'is_home_page' => 1
             ],
             [
                 'title' => 'Playstation',
@@ -38,7 +40,8 @@ class BrandSeeder extends Seeder
             ],
             [
                 'title' => 'XBOX',
-                'thumbnail' => '/storage/brands/6.png'
+                'thumbnail' => '/storage/brands/6.png',
+                'is_home_page' => 1
             ]
             
         ];
@@ -48,6 +51,7 @@ class BrandSeeder extends Seeder
                     'title' => $brand['title']
                 ],
                 [
+                    'is_home_page' => $brand['is_home_page'] ?? 0,
                     'thumbnail' => $brand['thumbnail'] ?? ''
                 ]
             );
