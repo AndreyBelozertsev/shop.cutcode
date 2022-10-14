@@ -19,6 +19,10 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/test', function(){
+    return ;
+});
+
 Route::get('/dashboard', function () {
     return view('page.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
