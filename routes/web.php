@@ -20,7 +20,9 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/test', function(){
-    return ;
+    return logger()
+            ->channel('telegram')
+            ->debug('hello world');
 });
 
 Route::get('/dashboard', function () {

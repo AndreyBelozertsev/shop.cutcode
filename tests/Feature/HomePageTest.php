@@ -29,8 +29,8 @@ class HomePageTest extends TestCase
 
     public function test_home_page_active_objects()
     {
-        $brand = Brand::factory()->create();
-        $category = Category::factory()->create();
+        $brand = Brand::factory()->create(['is_home_page'=>1]);
+        $category = Category::factory()->create(['is_home_page'=>1]);
         $product = Product::factory()->create();
         
         $response = $this->get('/');
@@ -62,5 +62,18 @@ class HomePageTest extends TestCase
         $response->assertDontSeeText($brand->title);
         $response->assertDontSeeText($category->title);
         $response->assertDontSeeText($product->title);
+    }
+
+    public function test_home_page_for_main_page_objects()
+    {
+        $brand = Brand::factory()->create(['is_home_page'=>1]);
+        $category = Category::factory()->create(['is_home_page'=>1]);
+
+
+        
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        $response->assertSeeText($brand->title);
+        $response->assertSeeText($category->title);
     }
 }
