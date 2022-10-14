@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ProductSeeder::class,
             ProductRaitingSeeder::class,
+            NavigationSeeder::class,
+            PageSeeder::class
         ]);
     }
 }

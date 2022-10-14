@@ -15,8 +15,42 @@ class BrandSeeder extends Seeder
      */
     public function run()
     { 
-        Brand::factory()
-            ->count(10)
-            ->create();
+        $brands = [
+            [
+                'title' => 'Steelseries',
+                'thumbnail' => '/storage/brands/1.png'
+            ],
+            [
+                'title' => 'Razer',
+                'thumbnail' => '/storage/brands/2.png'
+            ],
+            [
+                'title' => 'Logitech',
+                'thumbnail' => '/storage/brands/3.png'
+            ],
+            [
+                'title' => 'HyperX',
+                'thumbnail' => '/storage/brands/4.png'
+            ],
+            [
+                'title' => 'Playstation',
+                'thumbnail' => '/storage/brands/5.png'
+            ],
+            [
+                'title' => 'XBOX',
+                'thumbnail' => '/storage/brands/6.png'
+            ]
+            
+        ];
+        foreach ($brands as $brand){
+            Brand::updateOrCreate(
+                [
+                    'title' => $brand['title']
+                ],
+                [
+                    'thumbnail' => $brand['thumbnail'] ?? ''
+                ]
+            );
+        }
     }
 }

@@ -15,8 +15,45 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()
-            ->count(10)
-            ->create();
+        $categories = [
+            [
+                'title' => 'Мыши'
+            ],
+            [
+                'title' => 'Клавиатуры'
+            ],
+            [
+                'title' => 'Наушники'
+            ],
+            [
+                'title' => 'Поверхности'
+            ],
+            [
+                'title' => 'Мониторы'
+            ],
+            [
+                'title' => 'Консоли'
+            ],
+            [
+                'title' => 'Акустика'
+            ],
+            [
+                'title' => 'Аксессуары'
+            ],
+            [
+                'title' => 'Распродажа'
+            ]
+            
+        ];
+        foreach ($categories as $category){
+            Category::updateOrCreate(
+                [
+                    'title' => $category['title']
+                ],
+                [
+                    'thumbnail' => $category['title'] ?? ''
+                ]
+            );
+        }
     }
 }
