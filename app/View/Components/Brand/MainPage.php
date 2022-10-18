@@ -9,7 +9,7 @@ class MainPage extends Component
 {
     
     protected function getData(){
-        return Brand::active()->homePage()->get();
+        return Brand::active()->homePage()->orderBy('sort')->get();
     }
     /**
      * Get the view / contents that represent the component.

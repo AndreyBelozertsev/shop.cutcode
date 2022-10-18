@@ -3,7 +3,6 @@
 namespace App\Logging\Telegram;
 
 use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
 use Monolog\Formatter\LineFormatter;
 
 class TelegramLoggerFactory
@@ -19,14 +18,13 @@ class TelegramLoggerFactory
     {
 
         $output = "%datetime%\nУровень: %level_name% \nСообщение: %message%\n";
-        $formatter = new LineFormatter($output, "Дата: Y-m-d Время: H:i:sP");
+        $formatter = new LineFormatter($output, "Дата: Y-m-d Время: H:i:s Часовой пояс: P");
 
         $streamHandler = new TelegramLoggerHandler($config);
         $streamHandler->setFormatter($formatter);
 
         $logger = new Logger('telegram');
         $logger->pushHandler($streamHandler);
-    
         
         return $logger;
     }
