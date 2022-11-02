@@ -27,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        if(app()->isLocal()){
+            Schema::dropIfExists('password_resets');
+        }
     }
 };

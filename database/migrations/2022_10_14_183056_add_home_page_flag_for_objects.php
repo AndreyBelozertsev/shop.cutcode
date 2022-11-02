@@ -33,11 +33,13 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('brands', function (Blueprint $table) {
-            $table->dropColumn('is_home_page');
-        });
-        Schema::table('categories', function (Blueprint $table) {
-            $table->dropColumn('is_home_page');
-        });
+        if(app()->isLocal()){
+            Schema::table('brands', function (Blueprint $table) {
+                $table->dropColumn('is_home_page');
+            });
+            Schema::table('categories', function (Blueprint $table) {
+                $table->dropColumn('is_home_page');
+            });
+        }
     }
 };

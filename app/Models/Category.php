@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\Models\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory;
+    use HasSlug;
 
     protected $fillable = [
         'title',
@@ -18,7 +20,7 @@ class Category extends Model
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class);
     }
     public function scopeActive($query)
     {
@@ -30,17 +32,4 @@ class Category extends Model
         return $query->where('is_home_page',1);
     }
 
-    /**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ];
-    }
 }

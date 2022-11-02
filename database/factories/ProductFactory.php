@@ -20,10 +20,9 @@ class ProductFactory extends Factory
     {
         return [
             'title' => fake()->word(),
-            'thumbnail' => fake()->imageUrl(640, 480),
+            'thumbnail' => $this->faker->fixturesImage('products', 'images/products' ),
             'price' => fake()->randomFloat(2, 500, 20000),
             'description' => fake()->paragraph(),
-            'category_id' => Category::all()->random(),
             'brand_id' => Brand::all()->random(),
         
         ];

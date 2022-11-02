@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\Models\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory;
+    use HasSlug;
 
     protected $fillable = [
         'title',
@@ -21,9 +23,9 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class);
     }
 
     public function raiting()
@@ -41,17 +43,4 @@ class Product extends Model
         return $query->orderBy('raiting.vote', 'asc');
     }
 
-    /**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ];
-    }
 }

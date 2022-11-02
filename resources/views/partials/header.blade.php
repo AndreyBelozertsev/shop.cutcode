@@ -2,6 +2,11 @@
 <html lang="ru">
 @include('partials.head')
 <body x-data="{ 'showTaskUploadModal': false, 'showTaskEditModal': false }" x-cloak>
+	@if($message = flash()->get() )
+		<div class="{{ $message->class() }} p-5">
+			{{ $message->message() }}
+		</div>
+	@endif
 
 	<!-- Site header -->
 	<header class="header pt-6 xl:pt-12">
@@ -24,8 +29,8 @@
 					<x-top-navigation-menu />
 				</div><!-- /.header-menu -->
 				<div class="header-actions flex items-center gap-3 md:gap-5">
-                @if (auth()->check())
-                    <div x-data="{dropdownProfile: false}" class="profile relative">
+				@if (auth()->check())
+					<div x-data="{dropdownProfile: false}" class="profile relative">
 						<button @click="dropdownProfile = ! dropdownProfile" class="flex items-center text-white hover:text-pink transition">
 							<span class="sr-only">Профиль</span>
 							<img src="{{ asset(auth()->user()->thumbnail ) }}" class="shrink-0 w-7 md:w-9 h-7 md:h-9 rounded-full" alt="{{ auth()->user()->name }}">
@@ -57,13 +62,15 @@
 								</ul>
 							</div>
 							<div class="mt-6">
-								<a href="{{ route('logout') }}" class="inline-flex items-center text-body hover:text-pink">
+								<form action="{{ route('logOut') }}" method="POST" class="inline-flex items-center text-body hover:text-pink">
+									@csrf
+									@method('DELETE')
 									<svg class="shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
 										<path d="m19.026 7.643-3.233-3.232a.833.833 0 0 0-1.178 1.178l3.232 3.233c.097.098.18.207.25.325-.012 0-.022-.007-.035-.007l-13.07.027a.833.833 0 1 0 0 1.666l13.066-.026c.023 0 .042-.012.064-.014a1.621 1.621 0 0 1-.278.385l-3.232 3.233a.833.833 0 1 0 1.178 1.178l3.233-3.232a3.333 3.333 0 0 0 0-4.714h.003Z"/>
 										<path d="M5.835 18.333H4.17a2.5 2.5 0 0 1-2.5-2.5V4.167a2.5 2.5 0 0 1 2.5-2.5h1.666a.833.833 0 1 0 0-1.667H4.17A4.172 4.172 0 0 0 .002 4.167v11.666A4.172 4.172 0 0 0 4.169 20h1.666a.833.833 0 1 0 0-1.667Z"/>
 									</svg>
-									<span class="ml-2 font-medium">Выйти</span>
-								</a>
+									<button type="submit" class="ml-2 font-medium">Выйти</button>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -76,12 +83,12 @@
 							<span class="text-white text-xxs 2xl:text-xs font-bold !leading-none">57 900 ₽</span>
 						</div>
 					</a>
-                @else
-                    <a href="{{ route('login-service') }}" class="profile hidden xs:flex items-center">
+				@else
+					<a href="{{ route('login') }}" class="profile hidden xs:flex items-center">
 						<svg class="profile-icon w-8 h-8 text-purple" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><defs/><path d="M26.749 24.93A13.99 13.99 0 1 0 2 16a13.899 13.899 0 0 0 3.251 8.93l-.02.017c.07.084.15.156.222.239c.09.103.187.2.28.3c.28.304.568.596.87.87c.092.084.187.162.28.242c.32.276.649.538.99.782c.044.03.084.069.128.1v-.012a13.901 13.901 0 0 0 16 0v.012c.044-.031.083-.07.128-.1c.34-.245.67-.506.99-.782c.093-.08.188-.159.28-.242c.302-.275.59-.566.87-.87c.093-.1.189-.197.28-.3c.071-.083.152-.155.222-.24zM16 8a4.5 4.5 0 1 1-4.5 4.5A4.5 4.5 0 0 1 16 8zM8.007 24.93A4.996 4.996 0 0 1 13 20h6a4.996 4.996 0 0 1 4.993 4.93a11.94 11.94 0 0 1-15.986 0z" fill="currentColor"/></svg>
 						<span class="profile-text relative ml-2 text-white text-xxs md:text-xs font-bold">Войти</span>
 					</a>
-                @endif
+				@endif
 					<button id="burgerMenu" class="flex 2xl:hidden text-white hover:text-pink transition">
 						<span class="sr-only">Меню</span>
 						<svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

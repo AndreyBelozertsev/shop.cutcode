@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Auth\GitHubAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +18,6 @@ use App\Http\Controllers\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/test', function(){
     return logger()
@@ -43,5 +43,3 @@ Route::get('/products', [ProductController::class, 'index'])->name('product.inde
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
-
-require __DIR__.'/auth.php';
